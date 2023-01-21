@@ -14,18 +14,21 @@ const CreatePost = () => {
   });
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const generateImage = () => {
+
+  }
   
   const handleSubmit = () => {
 
   }
 
-  const handleChange = (e) => {
-
-  }
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSurpriseMe = () => {
-
-  }
+    const randomPrompt = getRandomPrompt(form.prompt);
+    setForm({ ...form, prompt: randomPrompt });
+  };
   
   return (
     <section className="max-w-7xl mx-auto">
@@ -82,7 +85,7 @@ const CreatePost = () => {
         <div className="mt-5 flex gap-5">
           <button
             type="button"
-            //onClick={generateImage}
+            onClick={generateImage}
             className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             {generatingImg ? 'Generating...' : 'Generate'}
